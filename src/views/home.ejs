@@ -12,5 +12,21 @@
         <li><a href="#contact">Contact</a></li>
         <li style="float:right"><a class="active" href="#about">About</a></li>
       </ul>
+
+    <div class="form-add-new">
+        <form action="/create-user" method="POST"> 
+            <fieldset>
+              <legend>Add new user:</legend>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name"><br><br>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email"><br><br>
+              <label for="email">City:</label>
+              <input type="city" id="city" name="city"><br><br>
+             
+              <input type="submit" value="Submit">
+            </fieldset>
+          </form>
+    </div>
 </body>
 </html>

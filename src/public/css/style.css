@@ -26,3 +26,13 @@ ul {
   .active {
     background-color: #04AA6D;
   }
+
+  .form-add-new {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 100px;
+  }
+
+  .button {
+    cursor: pointer;
+  }
