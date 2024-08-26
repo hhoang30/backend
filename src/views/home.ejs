@@ -2,31 +2,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HomePage</title>
     <link rel="stylesheet"  href="/css/style.css">
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border-color: aquamarine
+      }
+
+      th,td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .table-container {
+        padding: 15px 20px;
+      }
+      tr:hover {
+        background-color: aqua;
+      }
+      .w3-table-all{
+        border:1px solid #ccc
+      }
+
+      </style>
+      <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
 <body>
     <ul>
-        <li><a class = "active"  href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li style="float:right"><a class="active" href="#about">About</a></li>
+        <li><a class = "active"  href="/">Home</a></li>
+        <li><a href="/create">Create User</a></li>
       </ul>
+  <div class="table-container">
+    <div class="title">List users</div>
 
-    <div class="form-add-new">
-        <form action="/create-user" method="POST"> 
-            <fieldset>
-              <legend>Add new user:</legend>
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name"><br><br>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email"><br><br>
-              <label for="email">City:</label>
-              <input type="city" id="city" name="city"><br><br>
-             
-              <input type="submit" value="Submit">
-            </fieldset>
-          </form>
-    </div>
+      <table class="w3-table-all">
+        <thead>
+          <tr class="w3-light-grey">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+        <tr>
+          <td>Adam</td>
+          <td>Johnson</td>
+          <td>67</td>
+        </tr>
+        <tr>
+          <td>Bo</td>
+          <td>Nilson</td>
+          <td>35</td>
+        </tr>
+      </table>
+  </div>
 </body>
 </html>
