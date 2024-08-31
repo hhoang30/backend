@@ -1,5 +1,8 @@
 const connection = require('../config/database')
-const {getAllUsers, getUserById} = require('../services/CRUDService')
+const {getAllUsers,
+    getUserById,
+    updateUserById,
+    createNewUser} = require('../services/CRUDService')
 
 const getHomepage = async (req, res) => {
 
@@ -17,8 +20,6 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.userId;
-    console.log(userId);
-    
 
     let user = await getUserById(userId);
     return res.render('update.ejs', {user: user})
@@ -26,34 +27,22 @@ const getUpdatePage = async (req, res) => {
 
 const postUpdateUser = async (req,res) => {
     //  const userId = req.params.userId;
-    // let { name, email , city, userId } = req.body;
-    let email = req.body.email;
-    let name = req.body.name;
-    let city = req.body.city;
-    let userId = req.body.index;
-
-    console.log(req.body);
-    
-    let [results , fields] = await connection.query(
-        `UPDATE Users SET email = ?, name = ?, city =? WHERE id = ? `, [email, name, city, userId] 
-    );
-    console.log("check result", results);
-    
-    res.send("user updated");
-
+    let { name, email , city, userId } = req.body;
+    let user = await updateUserById(name, email , city, userId)
+    return res.redirect("/");
 }
 
-const postCreateUser = async (req,res) => {
-
+const postCreateUser = async (req,res) => {  
     let { email, name, city } = req.body;
-    
-    let [results , fields] = await connection.query(
-        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
-    );
-    console.log("check result", results);
-    
-    res.send("create new user");
+    let user = await createNewUser(name, email, city);
+    return res.redirect("/");
 }
+
+// const confirmDelete = async (req,res) => {
+//     // return alert("delete");
+//     await console.log("click me");
+    
+// }
 
 module.exports = {
     getHomepage,
@@ -61,5 +50,5 @@ module.exports = {
     postCreateUser,
     getCreatePage,
     getUpdatePage,
-    postUpdateUser
+    postUpdateUser,
 }

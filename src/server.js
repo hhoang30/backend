@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const connection = require('./config/database')
 const webRoutes = require("./routes/web")
-const configViewEngine = require('./config/viewEngine')
+const configViewEngine = require('./config/viewEngine');
+const { confirmDelete } = require('./controllers/homeController');
 const app = express()
 const port = process.env.PORT;
 const hostname = process.env.HOST_NAME;
@@ -18,8 +19,13 @@ app.use(express.urlencoded({ extended: true })) // for form data
 //khai bao route
 app.use('/', webRoutes);
 
+app.locals = require("./controllers/homeController")
 
-
+// app.get("/", (req, res) => {
+//   res.render("home", {
+//     delete: "confirmDelete" // -> THIS PASS AS OBJECT/FUNCTION
+//   });
+// });
 
 
 // connection.query(

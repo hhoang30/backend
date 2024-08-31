@@ -17,8 +17,30 @@ const getUserById = async (userId) => {
     return user;
 }
 
+const updateUserById = async (name, email , city, userId) => {
+    let [results , fields] = await connection.query(
+        `UPDATE Users SET email = ?, name = ?, city =? 
+        WHERE id = ? `, [email, name, city, userId] 
+    );
+    console.log(results);
+    
+    return results;
+}
+
+const createNewUser = async (name, email, city) => {
+        
+    let [results , fields] = await connection.query(
+        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
+    );
+    console.log("check result", results);
+    let user = [email, name, city];
+    console.log(user);
+    return user;
+}
+
 
 
 module.exports = {
-    getAllUsers,getUserById
+    getAllUsers,getUserById,
+    updateUserById, createNewUser
 }
