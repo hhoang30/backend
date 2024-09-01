@@ -51,12 +51,16 @@
         </thead>
         <% listUsers.forEach(function(user, index) { %>
         <tr>
-          <td><%= index +1%></td>
+          <td><%= user.id%></td>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
           <td><%= user.city %></td>
           <td>
-            <button><a href= "/update/<%= index +1%>">Edit</a></button>
+            <button><a href= "/update/<%= user.id%>">Edit</a></button>
+            <form action="/delete-user/<%= user.id%>" method="POST">
+              <button>Delete</button>
+            </form>
+
           </td>
         </tr>
         <% }) %>

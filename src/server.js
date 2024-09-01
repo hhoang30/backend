@@ -27,15 +27,6 @@ app.locals = require("./controllers/homeController")
 //   });
 // });
 
-
-// connection.query(
-//   'SELECT * FROM Users u',
-//   function (err, results, fields) {
-//     console.log(results); // results contains rows returned by server 
-//   }
-// );
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
